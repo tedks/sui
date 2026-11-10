@@ -1,0 +1,27 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_test")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "closure_metric",
+    srcs = ["src/lib.rs"],
+    crate_root = "src/lib.rs",
+    crate_name = "prometheus_closure_metric",
+    edition = "2021",
+    deps = [
+        "@metric_crates//:anyhow",
+        "@metric_crates//:prometheus",
+        "@metric_crates//:protobuf",
+    ],
+)
+
+rust_test(
+    name = "closure_metric_test",
+    srcs = ["tests/closure_metric.rs"],
+    crate_root = "tests/closure_metric.rs",
+    edition = "2021",
+    deps = [
+        ":closure_metric",
+        "@metric_crates//:prometheus",
+    ],
+)
