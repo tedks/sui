@@ -9,6 +9,7 @@
 # Rust build directory
 **/target
 .pre-commit*
+/bazel-*
 
 # Move build directory
 build
